@@ -3,9 +3,9 @@ info:
   title: "fhir server"
   version: "1.0.0"
 paths:
-  /v1/plugin/pdspi-guidance-example/clinical_feature_variables:
+  /v1/plugin/pdspi-guidance-example/config:
     get:
-      operationId: api.get_clinical_feature_variables
+      operationId: api.get_guidance_config
       parameters: []
       responses:
         '200':

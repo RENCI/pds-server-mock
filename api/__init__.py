@@ -107,8 +107,8 @@ def post_guidance(body):
 def post_log(body):
     return None
 
-def get_clinical_feature_variables():
-    return clinical_feature_variables
+def get_guidance_config():
+    return config[0]
 
 def get_patient(ptid):
     return patients.get(ptid, ("not found", 404))
