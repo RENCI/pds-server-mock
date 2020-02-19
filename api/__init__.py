@@ -138,7 +138,7 @@ def get_phenotype(patient_id, timestamp, body):
         return ("Not Found", 404)
     else:
         for p, cfv in zip(ps, clinical_feature_variables):
-            cus = [a for a in body["patientVariables"] if a["id"] == cfv["id"]]
+            cus = [a for a in body["variableTypes"] if a["id"] == cfv["id"]]
             if len(cus) > 0:
                 q = cus[0]
                 unit = q.get("units")
