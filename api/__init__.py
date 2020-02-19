@@ -25,7 +25,14 @@ clinical_feature_variables = [
 
 config = [{
     "piid": "pdspi-guidance-example",
+    "pluginType": "g",
     "requiredPatientVariables": clinical_feature_variables
+}, {
+    "piid": "pdspi-mapper-example",
+    "pluginType": "m"
+}, {
+    "piid": "pdspi-fhir-example",
+    "pluginType": "f"
 }]
 
 custom_units = []
@@ -125,8 +132,8 @@ def get_observation(patient):
         "entry": []
     })
 
-def get_phenotype(ptid, fhir_plugin_id, timestamp, body):
-    ps = phenotypes.get(ptid)
+def get_phenotype(patient_id, timestamp, body):
+    ps = phenotypes.get(patient_id)
     if ps is None:
         return ("Not Found", 404)
     else:
