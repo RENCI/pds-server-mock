@@ -108,7 +108,7 @@ observations = {
 }
 
 def get_config():
-    return config
+    return [config[0], config[2], config[3]]
 
 def get_custom_units():
     return custom_units

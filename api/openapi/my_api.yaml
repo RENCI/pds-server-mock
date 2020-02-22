@@ -55,12 +55,7 @@ paths:
     post:
       operationId: api.get_phenotype
       parameters:
-        - name: ptid
-          in: query
-          schema:
-            type: string
-          required: true
-        - name: fhir_plugin_id
+        - name: patient_id
           in: query
           schema:
             type: string
@@ -171,7 +166,7 @@ paths:
                   $ref: '#/components/schemas/PluginConfig'
         '400':
           description: bad input parameter
-  /v1/plugin/pdspi-config/custom_units:
+  /v1/plugin/pdspi-config/customUnits:
     get:
       summary: gets list of plugins with their selectors and required variables
       operationId: api.get_custom_units
@@ -475,7 +470,7 @@ components:
           description: "The unit is standard throughout the pds system. It's up to the guidance plugin to make unit conversions as needed by the guidance model, just as it is up to the dashboard to make unit conversions as needed by the end user."
           example: "years"
         certitude:
-          type: int
+          type: integer
           description: The certitude of the value, 0 not certain, 1 somewhat certain, 2 certain
           example: 2
         how:
