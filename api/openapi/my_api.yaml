@@ -5,7 +5,19 @@ info:
 paths:
   /v1/plugin/pdspi-guidance-example/config:
     get:
-      operationId: api.get_guidance_config
+      operationId: api.get_guidance_example_config
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
+  /v1/plugin/pdspi-guidance-example2/config:
+    get:
+      operationId: api.get_guidance_example2_config
       parameters: []
       responses:
         '200':
@@ -43,7 +55,12 @@ paths:
     post:
       operationId: api.get_phenotype
       parameters:
-        - name: patient_id
+        - name: ptid
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: fhir_plugin_id
           in: query
           schema:
             type: string
@@ -154,7 +171,7 @@ paths:
                   $ref: '#/components/schemas/PluginConfig'
         '400':
           description: bad input parameter
-  /v1/plugin/pdspi-config/customUnits:
+  /v1/plugin/pdspi-config/custom_units:
     get:
       summary: gets list of plugins with their selectors and required variables
       operationId: api.get_custom_units
@@ -458,7 +475,7 @@ components:
           description: "The unit is standard throughout the pds system. It's up to the guidance plugin to make unit conversions as needed by the guidance model, just as it is up to the dashboard to make unit conversions as needed by the end user."
           example: "years"
         certitude:
-          type: integer
+          type: int
           description: The certitude of the value, 0 not certain, 1 somewhat certain, 2 certain
           example: 2
         how:
