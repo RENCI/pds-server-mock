@@ -26,13 +26,16 @@ clinical_feature_variables = [
 config = [{
     "piid": "pdspi-guidance-example",
     "pluginType": "g",
-    "requiredPatientVariables": clinical_feature_variables
+    "requiredPatientVariables": clinical_feature_variables,
+    "enabled": "True"
 }, {
     "piid": "pdspi-mapper-example",
-    "pluginType": "m"
+    "pluginType": "m",
+    "enabled": "True"
 }, {
     "piid": "pdspi-fhir-example",
-    "pluginType": "f"
+    "pluginType": "f",
+    "enabled": "True"    
 }]
 
 custom_units = []
@@ -116,6 +119,12 @@ def post_log(body):
 
 def get_guidance_config():
     return config[0]
+
+def get_mapper_config():
+    return config[1]
+
+def get_fhir_config():
+    return config[2]
 
 def get_patient(ptid):
     return patients.get(ptid, ("not found", 404))

@@ -15,6 +15,30 @@ paths:
               schema: {}
         '404':
           description: not found
+  /v1/plugin/pdspi-mapper-example/config:
+    get:
+      operationId: api.get_mapper_config
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
+  /v1/plugin/pdspi-fhir-example/config:
+    get:
+      operationId: api.get_fhir_config
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
   /v1/plugin/pdspi-mapper-example/mapping:
     post:
       operationId: api.get_phenotype
