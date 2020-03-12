@@ -77,6 +77,25 @@ paths:
               schema: {}
         '404':
           description: not found
+  /v1/plugin/tx-vis/vega_spec:
+    post:
+      summary: Given a visualization type id and visualization parameters, return the vega spec for visualization
+      operationId: api.post_vega_spec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VegaSpecInputs'
+      responses:
+        '200':
+          description: "Vega spec matching query"
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: "Bad Request"
+        '500':
+          description: "Internal Server Error"
   /v1/plugin/pdspi-guidance-example/guidance:
     post:
       summary: given a patient ID and a plugin id, return the guidance
@@ -84,7 +103,7 @@ paths:
       responses:
         '200':
           description: guidance matching query
-          content: 
+          content:
             application/json:
               schema:
                   $ref: '#/components/schemas/Guidance'
@@ -226,6 +245,24 @@ paths:
   #         description: Invalid input
 components:
   schemas:
+    VegaSpecInputs:
+      type: object
+      properties:
+        typeid:
+          type: string
+          description: "type of the visualization chart to return spec for"
+          default: "line_chart"
+          example: "multiple_line_chart"
+        x_axis_title:
+          type: string
+          description: "customize title of the x axis for the visualization chart"
+          default: "x axis"
+          example: "Time"
+        y_axis_title:
+          type: string
+          description: "customize title of the y axis for the visualization chart"
+          default: "y axis"
+          example: "Drug Dosage"
     GuidanceInputs:
       type: object
       required:
@@ -269,6 +306,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Card'
+        vizOutputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Output'
     Card:
       type: object
       required:
@@ -306,6 +347,150 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Link'
+    Output:
+      type: object
+      required:
+        - id
+        - name
+        - data
+        - specs
+      properties:
+        id:
+          type: string
+          example: "oid-1"
+        name:
+          type: string
+          example: "Time-series data"
+        description:
+          type: string
+          example: "Information about time-series data"
+        data:
+          type: array
+          description: "data to be visualized"
+          items:
+            $ref: '#/components/schemas/DataItem'
+        specs:
+          type: array
+          description: "Vega-lite spec used for guidance visualization"
+          items:
+            $ref: '#/components/schemas/Spec'
+    DataItem:
+      type: object
+      required:
+        - x
+      properties:
+        x:
+          type: number
+          description: "data point value that can be used to plot for x axis"
+        y:
+          type: number
+          description: "data point value that can be used to plot for y axis"
+        group:
+          type: string
+          description: "groups of data points in which different groups can be plotted differently, e.g., different groups can be plotted with different colors."
+    Spec:
+      type: object
+      required:
+        - title
+        - data
+      properties:
+        $schema:
+          type: string
+          description: "URL to JSON schema for a vega-lite specification"
+          example: "https://vega.github.io/schema/vega-lite/v4.json"
+        title:
+          type: string
+          description: "title for the plot"
+          example: "Line chart"
+        description:
+          type: string
+          example: "Time-series line chart"
+        width:
+          type: string
+          example: "container"
+        height:
+          type: string
+          example: "container"
+        autosize:
+          type: object
+          properties:
+            resize:
+              type: boolean
+              example: true
+        data:
+          type: object
+          description: "An object describing the data source"
+          properties:
+            name:
+              type: string
+              description: "Provide a placeholder name and bind data at runtime"
+              example: "data"
+        mark:
+          type: string
+          description: "type of the mark which is the basic visual building block of a visualization"
+          example: "line"
+        encoding:
+          type: object
+          description: "visualization encodings"
+          properties:
+            x:
+              type: object
+              description: "visualization encodings for x axis"
+              properties:
+                bin:
+                  type: boolean
+                  description: "whether to aggregate data into bins"
+                  example: true
+                field:
+                  type: string
+                  description: "the field name in data to bind to x axis at runtime"
+                  example: "x"
+                type:
+                  type: string
+                  description: "type of the data field to bind for visualization"
+                  example: "quantitative"
+                axis:
+                  type: object
+                  description: "specify axis properties, e.g., title of the axis"
+                  properties:
+                    title:
+                      type: string
+                      example: "x axis"
+            y:
+              type: object
+              description: "visualization encodings for y axis"
+              properties:
+                aggregate:
+                  type: string
+                  description: "the field name in data to aggregate and bind to y axis at run time"
+                  example: "count"
+                field:
+                  type: string
+                  description: "the field name in data to bind to y axis at runtime"
+                  example: "y"
+                type:
+                  type: string
+                  description: "type of the data field to bind for visualization"
+                  example: "quantitative"
+                axis:
+                  type: object
+                  description: "specify axis properties, e.g., title of the axis"
+                  properties:
+                    title:
+                      type: string
+                      example: "y axis"
+            color:
+              type: object
+              description: "visualization encodings for color"
+              properties:
+                field:
+                  type: string
+                  description: "the field name in data to bind to color at runtime"
+                  example: "group"
+                type:
+                  type: string
+                  description: "type of the data field to bind for visualization"
+                  example: "nominal"
     Source:
       type: object
       required:
