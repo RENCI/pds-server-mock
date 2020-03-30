@@ -96,6 +96,25 @@ paths:
           description: "Bad Request"
         '500':
           description: "Internal Server Error"
+  /v1/plugin/tx-generator-dosing/concentration_data:
+    post:
+      summary: return blood concentration time series data given drug dose, dosing internal (tau), creatinine clearance, and other optional parameters such as volume distribution, infusion time, and number of cycles
+      operationId: api.get_concentration_data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConcentrationInputs'
+      responses:
+        '200':
+          description: "Drug blood concentration data matching query"
+          content:
+            application/json:
+              schema: {}
+        '400':
+          description: "Bad Request"
+        '500':
+          description: "Internal Server Error"
   /v1/plugin/pdspi-guidance-example/guidance:
     post:
       summary: given a patient ID and a plugin id, return the guidance
@@ -263,6 +282,40 @@ components:
           description: "customize title of the y axis for the visualization chart"
           default: "y axis"
           example: "Drug Dosage"
+    ConcentrationInputs:
+      type: object
+      required:
+        - dose
+        - tau
+        - cr_cl
+      properties:
+        dose:
+          type: number
+          description: "drug dose in mg unit"
+          example: "180"
+        tau:
+          type: number
+          description: "drug dosing interval in hour unit"
+          example: "12"
+        cr_cl:
+          type: number
+          description: "Creatinine Clearance in mL/min unit"
+          example: "50"
+        t_infusion:
+          type: number
+          description: "infusion time in hour unit"
+          default: "0.5"
+          example: "1"
+        vd:
+          type: number
+          description: "volume distribution in L unit"
+          default: "22.59"
+          example: "23.28"
+        num_cycles:
+          type: integer
+          description: "number of cycles for concentration graph"
+          default: "4"
+          example: "10"
     GuidanceInputs:
       type: object
       required:

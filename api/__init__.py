@@ -70,6 +70,41 @@ vega_spec_output = {
     }
 }
 
+concentration_data_output = {
+    {
+        "x": 0,
+        "y": 0
+    },
+    {
+        "x": 6,
+        "y": 5.115358321074912
+    },
+    {
+        "x": 12,
+        "y": 1.9527672124692657
+    },
+    {
+        "x": 18,
+        "y": 5.860819253965945
+    },
+    {
+        "x": 24,
+        "y": 2.2373438885407997
+    },
+    {
+        "x": 30,
+        "y": 5.969455241434752
+    },
+    {
+        "x": 36,
+        "y": 2.2788152344579182
+    },
+    {
+        "x": 42,
+        "y": 5.985286758892745
+    }
+}
+
 guidance = {
     "title": "guidance title",
     "id": "guidance id",
@@ -144,6 +179,9 @@ def post_guidance(body):
 
 def post_vega_spec(body):
     return vega_spec_output
+
+def post_concentration_data(body):
+    return concentration_data_output
 
 def post_log(body):
     return None
