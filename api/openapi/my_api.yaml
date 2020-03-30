@@ -99,7 +99,7 @@ paths:
   /v1/plugin/tx-generator-dosing/concentration_data:
     post:
       summary: return blood concentration time series data given drug dose, dosing internal (tau), creatinine clearance, and other optional parameters such as volume distribution, infusion time, and number of cycles
-      operationId: api.get_concentration_data
+      operationId: api.post_concentration_data
       requestBody:
         content:
           application/json:
