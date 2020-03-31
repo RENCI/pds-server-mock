@@ -70,8 +70,16 @@ vega_spec_output = {
     }
 }
 
-concentration_data_output = [
-    {
+concentration_data_output = {
+    "parameters": {
+        "crcl": 173.8782051282051,
+        "dose": 194.9438459371848,
+        "group": "guidance",
+        "peak": 4.105681976367244,
+        "tau": 10,
+        "trough": 0.02842381361658746
+    },
+    "data": [{
         "x": 0,
         "y": 0
     },
@@ -102,8 +110,8 @@ concentration_data_output = [
     {
         "x": 42,
         "y": 5.985286758892745
-    }
-]
+    }]
+}
 
 guidance = {
     "title": "guidance title",
