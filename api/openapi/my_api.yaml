@@ -204,18 +204,6 @@ paths:
                   $ref: '#/components/schemas/PluginConfig'
         '400':
           description: bad input parameter
-  /v1/plugin/pdspi-config/customUnits:
-    get:
-      summary: gets list of plugins with their selectors and required variables
-      operationId: api.get_custom_units
-      responses:
-        '200':
-          description: config matching query
-          content:
-            application/json:
-              schema: {}
-        '400':
-          description: bad input parameter
   /v1/plugin/pdspi-config/selectors:
     get:
       summary: gets list of plugins with their selectors and required variables

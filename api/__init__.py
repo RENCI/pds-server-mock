@@ -26,12 +26,10 @@ clinical_feature_variables = [
 config = [{
     "piid": "pdspi-guidance-example",
     "pluginType": "g",
-    "requiredPatientVariables": clinical_feature_variables,
     "enabled": True
 }, {
     "piid": "pdspi-guidance-example2",
     "pluginType": "g",
-    "requiredPatientVariables": clinical_feature_variables,
     "enabled": False
 }, {
     "piid": "pdspi-mapper-example",
@@ -42,8 +40,6 @@ config = [{
     "pluginType": "f",
     "enabled": True
 }]
-
-custom_units = []
 
 selectors = []
 
@@ -115,10 +111,11 @@ concentration_data_output = {
 
 guidance = {
     "title": "guidance title",
-    "id": "guidance id",
-    "justification": {},
-    "cards": [
-    ],
+    "piid": "guidance id",
+    "settings_requested": {},
+    "settings_used": {},
+    "advanced": {},
+    "cards": [],
 }
 
 phenotypes = {
@@ -176,9 +173,6 @@ observations = {
 def get_config():
     return [config[0], config[2], config[3]]
 
-def get_custom_units():
-    return custom_units
-
 def get_selectors():
     return selectors
 
@@ -234,8 +228,3 @@ def get_phenotype(patient_id, timestamp, body):
                 if unit is not None:
                     p["units"] = unit
         return ps
-
-
-
-
-
