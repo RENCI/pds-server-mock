@@ -283,9 +283,9 @@ components:
           type: string
         ptid:
           type: string
-        settings_requested:
+        settingsRequested:
           $ref: '#/components/schemas/Settings'
-        settings_used:
+        settingsUsed:
           $ref: '#/components/schemas/Settings'
         cards:
           type: array
@@ -297,9 +297,9 @@ components:
             $ref: '#/components/schemas/Output'
         timeout:
           type: integer
-        fhir_piid:
+        fhirPiid:
           type: string
-        mapper_piid:
+        mapperPiid:
           type: string
     Card:
       type: object
