@@ -114,8 +114,8 @@ concentration_data_output = {
 guidance = {
     "title": "guidance title",
     "piid": "guidance id",
-    "settings_requested": {},
-    "settings_used": {},
+    "settingsRequested": {},
+    "settingsUsed": {},
     "advanced": {},
     "cards": [],
 }
