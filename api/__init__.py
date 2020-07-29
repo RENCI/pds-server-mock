@@ -217,16 +217,19 @@ def get_observation(patient):
         "entry": []
     })
 
-def get_phenotype(patient_id, timestamp, body):
-    ps = phenotypes.get(patient_id)
-    if ps is None:
-        return ("Not Found", 404)
-    else:
+def get_phenotype(body):
+    patient_ids = body["patientIds"]
+    ret_response = []
+    for i, patient_id in enumerate(patient_ids):
+        ps = phenotypes.get(patient_id)
+        if ps is None:
+            return ("Not Found", 404)
         for p, cfv in zip(ps, clinical_feature_variables):
-            cus = [a for a in body["variableTypes"] if a["id"] == cfv["id"]]
+            cus = [a for a in body["settingsRequested"]["patientVariables"] if a["id"] == cfv["id"]]
             if len(cus) > 0:
                 q = cus[0]
                 unit = q.get("units")
                 if unit is not None:
                     p["units"] = unit
-        return ps
+        ret_response.append(ps)
+    return ret_response

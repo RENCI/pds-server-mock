@@ -54,17 +54,7 @@ paths:
   /v1/plugin/pdspi-mapper-example/mapping:
     post:
       operationId: api.get_phenotype
-      parameters:
-        - name: patient_id
-          in: query
-          schema:
-            type: string
-          required: true
-        - name: timestamp
-          in: query
-          schema:
-            type: string
-          required: true
+      parameters: []
       requestBody:
         content:
           application/json:
