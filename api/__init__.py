@@ -155,20 +155,116 @@ phenotypes = {
 }
 
 patients = {
-    "1000": {}
+    "1000": {
+        "resourceType": "Bundle",
+        "type": "collection",
+        "entry": [{
+            "resource": {
+                "resourceType": "Patient",
+                "birthDate": "2009-01-01T00:00:00Z",
+                "gender": "male"
+            }
+        }]
+    }
 }
 
 conditions = {
     "1000": {
         "resourceType": "Bundle",
-        "entry": []
+        "type": "collection",
+        "entry": [{
+            "resource": {
+                "resourceType": "Condition",
+                "subject": {
+                    "reference": "Patient/1000"
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://hl7.org/fhir/sid/icd-10-cm",
+                            "code": "I60.0011"
+                        }
+                    ]
+                },
+                "onsetDateTime": "2019-10-19T00:00:00Z"
+            }
+        }]
     }
 }
 
 observations = {
     "1000": {
         "resourceType": "Bundle",
-        "entry": []
+        "type": "collection",
+        "entry": [{
+            "resource": {
+                "resourceType": "Observation",
+                "subject": {
+                    "reference": "Patient/1000"
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "2160-0",
+                            "display": "Creatinine [Mass/volume] in Serum or Plasma"
+                        }
+                    ]
+                },
+                "effectiveInstant": "2019-10-19T00:00:00Z",
+                "valueQuantity": {
+                    "value": 95,
+                    "units": "mg/dL",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mg/dL"
+                }
+            }
+        }, {
+            "resource": {
+                "resourceType": "Observation",
+                "subject": {
+                    "reference": "Patient/1000"
+                },
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "2160-0",
+                            "display": "Creatinine [Mass/volume] in Serum or Plasma"
+                        }
+                    ]
+                },
+                "effectiveInstant": "2019-01-01T00:00:00Z",
+                "valueQuantity": {
+                    "value": 90,
+                    "units": "mg/dL",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "mg/dL"
+                }
+            }
+        },{
+            "resource":{
+                "resourceType": "Observation",
+                "code": {
+                    "coding": [
+                        {
+                            "system": "http://loinc.org",
+                            "code": "29463-7"
+                        }
+                    ]
+                },
+                "subject": {
+                    "reference": "Patient/1000"
+                },
+                "effectiveInstant": "2019-10-19T00:00:00Z",
+                "valueQuantity": {
+                    "value": 99.9,
+                    "units": "kg",
+                    "system": "http://unitsofmeasure.org",
+                    "code": "kg"
+                }
+            }
+        }]
     }
 }
 
