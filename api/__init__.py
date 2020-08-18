@@ -111,14 +111,14 @@ concentration_data_output = {
     }]
 }
 
-guidance = {
+guidance = [{
     "title": "guidance title",
     "piid": "guidance id",
     "settingsRequested": {},
     "settingsUsed": {},
     "advanced": {},
     "cards": [],
-}
+}]
 
 phenotypes = {
     "1000": [{
