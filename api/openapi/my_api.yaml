@@ -15,9 +15,33 @@ paths:
               schema: {}
         '404':
           description: not found
+  /v1/plugin/pdspi-config/config/pdspi-guidance-example:
+    get:
+      operationId: api.get_config_guidance_example
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
   /v1/plugin/pdspi-guidance-example2/config:
     get:
       operationId: api.get_guidance_example2_config
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
+  /v1/plugin/pdspi-config/config/pdspi-guidance-example2:
+    get:
+      operationId: api.get_config_guidance_example2
       parameters: []
       responses:
         '200':
@@ -39,9 +63,33 @@ paths:
               schema: {}
         '404':
           description: not found
+  /v1/plugin/pdspi-config/config/pdspi-mapper-example:
+    get:
+      operationId: api.get_config_mapper
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
   /v1/plugin/pdspi-fhir-example/config:
     get:
       operationId: api.get_fhir_config
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: {}
+        '404':
+          description: not found
+  /v1/plugin/pdspi-config/config/pdspi-fhir-example:
+    get:
+      operationId: api.get_config_fhir
       parameters: []
       responses:
         '200':

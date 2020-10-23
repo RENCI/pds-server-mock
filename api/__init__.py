@@ -289,14 +289,26 @@ def post_log(body):
 def get_guidance_example_config():
     return config[0]
 
+def get_config_guidance_example():
+    return {**config[0], "enabled": True}
+
 def get_guidance_example2_config():
     return config[1]
+
+def get_config_guidance_example2():
+    return {**config[1], "enabled": True}
 
 def get_mapper_config():
     return config[2]
 
+def get_config_mapper():
+    return {**config[2], "enabled": True}
+
 def get_fhir_config():
     return config[3]
+
+def get_config_fhir():
+    return {**config[3], "enabled": True}
 
 def get_patient(ptid):
     return patients.get(ptid, ("not found", 404))
