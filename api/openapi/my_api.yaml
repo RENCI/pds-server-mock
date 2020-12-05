@@ -246,6 +246,33 @@ paths:
                   $ref: '#/components/schemas/Config'
         '400':
           description: bad input parameter
+  /v1/plugin/pdspi-config/selectorConfig:
+    get:
+      summary: gets list of plugins with their selectors and required variables
+      operationId: api.get_selector_config
+      parameters: []
+      responses:
+        '200':
+          description: config matching query
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    selectors:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/PluginSelector'
+                    plugin:
+                      $ref: '#/components/schemas/Config'
+                  required:
+                    - selectors
+                    - plugin
+                  additionalProperties: false
+        '400':
+          description: bad input parameter
   /v1/plugin/pdspi-config/selectors:
     get:
       summary: gets list of plugins with their selectors and required variables

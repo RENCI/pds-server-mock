@@ -271,6 +271,21 @@ observations = {
 def get_config():
     return [config[0], config[2], config[3]]
 
+
+def get_selector_config():
+    configs = get_config()
+    
+    return [{
+        "selectors": [{
+            "id": "pluginType",
+            "selectorValue": {
+                "value": config["pluginType"]
+            }
+        }],
+        "plugin": config
+    } for config in configs]
+
+
 def get_selectors():
     return selectors
 
